@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvaderL3_2", "InvaderL3_2\InvaderL3_2.csproj", "{521B0959-FF2C-4E40-B958-B1849E21A407}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvaderL3_2.Tests", "InvaderL3_2.Tests\InvaderL3_2.Tests.csproj", "{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{521B0959-FF2C-4E40-B958-B1849E21A407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{521B0959-FF2C-4E40-B958-B1849E21A407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{521B0959-FF2C-4E40-B958-B1849E21A407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
