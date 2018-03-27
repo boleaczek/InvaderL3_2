@@ -13,7 +13,7 @@ namespace InvaderL3_2.Tests
         [Test]
         public void ExampleTest()
         {
-            Assert.AreEqual(2, 1 + 1);
+            
         }
     }
 }

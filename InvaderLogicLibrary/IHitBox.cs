@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    interface IHitBox
+    public interface IHitBox
     {
         int X { get; set; }
         int Y { get; set; }
