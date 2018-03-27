@@ -8,10 +8,10 @@ namespace InvaderLogicLibrary
 {
     public class HitBox:IHitBox
     {
-        int X;
-        int Y;
-        int Width;
-        int Height;
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
         public HitBox()
         {
