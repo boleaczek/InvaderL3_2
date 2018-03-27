@@ -8,6 +8,5 @@ namespace InvaderLogicLibrary
 {
     interface IBullet:IBulletFlyweight
     {
-        void Destroy();
     }
 }

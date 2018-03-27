@@ -40,11 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="IEnemyFlyweight.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IHitBox.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="IObserverSubject.cs" />
+=======
+    <Compile Include="IBullet.cs" />
+    <Compile Include="IBulletFlyweight.cs" />
+    <Compile Include="IEnemy.cs" />
+    <Compile Include="IHitBox.cs" />
+    <Compile Include="IPlayer.cs" />
+>>>>>>> 0390c9f01ce8c31a542e1bb9e47cf563919c396b
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
