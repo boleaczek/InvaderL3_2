@@ -13,12 +13,12 @@ namespace InvaderLogicLibrary
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public HitBox()
+        public HitBox(int x, int y, int width, int height)
         {
-            this.X = 0;
-            this.Y = 0;
-            this.Width = 0;
-            this.Height = 0;
+            this.X = x;
+            this.Y = y;
+            this.Width = width;
+            this.Height = height;
         }
 
         public bool IsHit(IHitBox hitbox)
