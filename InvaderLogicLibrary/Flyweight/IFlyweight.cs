@@ -8,6 +8,6 @@ namespace InvaderLogicLibrary
 {
     interface IFlyweight
     {
-        void Update();
+        void UpdateStatus();
     }
 }

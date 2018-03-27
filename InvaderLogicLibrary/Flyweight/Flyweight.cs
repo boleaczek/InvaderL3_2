@@ -14,7 +14,7 @@ namespace InvaderLogicLibrary
         {
             foreach (var gameObject in GameObjects)
             {
-                gameObject.Update();
+                gameObject.Notify();
             }
         }
     }

@@ -8,6 +8,6 @@ namespace InvaderLogicLibrary
 {
     interface IObserver
     {
-        void Update();
+        void Notify(IHitBox hitBox);
     }
 }
