@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HitBox.cs" />
     <Compile Include="IEnemyFlyweight.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IHitBox.cs" />

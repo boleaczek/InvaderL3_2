@@ -5,15 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace InvaderL3_2.Tests
 {
     [TestFixture]
-    public class ExampleTests
+    public class HitBoxTest
     {
         [Test]
-        public void ExampleTest()
+        public void IsHitTest()
         {
-            Assert.AreEqual(2, 1 + 1);
+            HitBox hitbox = new HitBox();
         }
     }
 }
