@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    interface IBulletFlyweight
+    interface IFlyweight
     {
-        void UpdateBullets();
+        void Update();
     }
 }
