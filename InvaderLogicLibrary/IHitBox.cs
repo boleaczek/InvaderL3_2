@@ -13,6 +13,6 @@ namespace InvaderLogicLibrary
         int Height { get; set; }
         int Length { get; set; }
 
-        bool IsHit(IHitBox);
+        bool IsHit(IHitBox hitbox);
     }
 }

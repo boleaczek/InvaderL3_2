@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvaderL3_2", "InvaderL3_2\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvaderL3_2.Tests", "InvaderL3_2.Tests\InvaderL3_2.Tests.csproj", "{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvaderLogicLibrary", "InvaderLogicLibrary\InvaderLogicLibrary.csproj", "{64C89802-F3C1-49FB-BCB3-8A40A9E1FE37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E7E10DC-3ABF-4CB7-B49A-48253DA0F660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C89802-F3C1-49FB-BCB3-8A40A9E1FE37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C89802-F3C1-49FB-BCB3-8A40A9E1FE37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C89802-F3C1-49FB-BCB3-8A40A9E1FE37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C89802-F3C1-49FB-BCB3-8A40A9E1FE37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
