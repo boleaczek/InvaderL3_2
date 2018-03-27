@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace InvaderL3_2.Tests
 {
     [TestFixture]
-    public class ExampleTests
+    public class HitBoxTest
     {
         [Test]
-        public void ExampleTest()
+        public void IsHitTest()
         {
-            
         }
     }
 }
