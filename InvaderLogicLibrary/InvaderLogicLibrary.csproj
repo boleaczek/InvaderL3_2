@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Flyweight\Flyweight.cs" />
+    <Compile Include="Flyweight\IFlyweight.cs" />
     <Compile Include="HitBox.cs" />
     <Compile Include="IBullet.cs" />
     <Compile Include="IEnemy.cs" />
