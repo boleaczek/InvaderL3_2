@@ -40,13 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="HitBox.cs" />
     <Compile Include="IBullet.cs" />
-    <Compile Include="IBulletFlyweight.cs" />
     <Compile Include="IEnemy.cs" />
-    <Compile Include="IEnemyFlyweight.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="IHitBox.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="IObserverSubject.cs" />
     <Compile Include="IPlayer.cs" />
