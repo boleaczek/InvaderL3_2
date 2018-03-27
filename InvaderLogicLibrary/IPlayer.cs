@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    interface IPlayer
+    interface IPlayer : IEntity, IObserver
     {
         void UpdatePosition();
     }

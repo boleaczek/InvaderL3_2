@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    interface IEnemy
+    interface IEnemy : IEntity, IObserver, IEnemyFlyweight
     {
     }
 }
