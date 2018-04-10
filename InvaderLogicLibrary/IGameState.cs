@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    interface IGameState
+    public interface IGameState
     {
         void OnLoad();
         void OnUnload();

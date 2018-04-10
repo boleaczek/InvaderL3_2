@@ -6,28 +6,29 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    class GameStateManager
+    public class GameStateManager
     {
         IGameState currentState;
 
-        GameStateManager(IGameState defaultState)
+        public GameStateManager(IGameState defaultState)
         {
             this.currentState = defaultState;
+            this.currentState.OnLoad();
         }
 
-        void SetState(IGameState newState)
+        public void SetState(IGameState newState)
         {
             this.currentState.OnUnload();
             this.currentState = newState;
             this.currentState.OnLoad();
         }
 
-        void Update(double dt)
+        public void Update(double dt)
         {
             this.currentState.OnUpdate(dt);
         }
 
-        void Draw()
+        public void Draw()
         {
             this.currentState.OnDraw();
         }
