@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enemies\StandardEnemy.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="Flyweight\IFlyweight.cs" />
     <Compile Include="HitBox.cs" />
     <Compile Include="IBullet.cs" />
-    <Compile Include="IEnemy.cs" />
+    <Compile Include="Enemies\IEnemy.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IHitBox.cs" />
     <Compile Include="IObserver.cs" />
