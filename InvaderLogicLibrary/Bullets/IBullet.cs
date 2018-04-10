@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary.Enemies
+namespace InvaderLogicLibrary
 {
-    interface IEnemy : IEntity, IObserver, IFlyweight
+    interface IBullet: IEntity, IObserverSubject, IFlyweight
     {
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary
+namespace InvaderLogicLibrary.Observer
 {
-    interface IPlayer : IEntity, IObserver
+    interface IObserver
     {
-        void UpdatePosition();
+        void Notify(IHitBox hitBox);
     }
 }

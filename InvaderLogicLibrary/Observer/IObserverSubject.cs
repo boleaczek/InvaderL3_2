@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary
+namespace InvaderLogicLibrary.Observer
 {
-    interface IBullet: IEntity, IObserverSubject, IFlyweight
+    interface IObserverSubject
     {
+        void Notify();
     }
 }

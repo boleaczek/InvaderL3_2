@@ -44,13 +44,13 @@
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="Flyweight\IFlyweight.cs" />
     <Compile Include="HitBox.cs" />
-    <Compile Include="IBullet.cs" />
+    <Compile Include="Bullets\IBullet.cs" />
     <Compile Include="Enemies\IEnemy.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IHitBox.cs" />
-    <Compile Include="IObserver.cs" />
-    <Compile Include="IObserverSubject.cs" />
-    <Compile Include="IPlayer.cs" />
+    <Compile Include="Observer\IObserver.cs" />
+    <Compile Include="Observer\IObserverSubject.cs" />
+    <Compile Include="OtherEntities\IPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
