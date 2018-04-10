@@ -18,7 +18,7 @@ namespace InvaderLogicLibrary.Enemies
 
         public void Update(double dt)
         {
-            throw new NotImplementedException();
+            hitbox.X += 1;
         }
 
         public void Notify(IHitBox hitBox)
@@ -27,11 +27,6 @@ namespace InvaderLogicLibrary.Enemies
             {
                 destroyed = true;
             }
-        }
-
-        public void UpdateStatus()
-        {
-            hitbox.X += 1;
         }
     }
 }

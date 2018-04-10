@@ -8,13 +8,13 @@ namespace InvaderLogicLibrary.Flyweight
 {
     class Flyweight
     {
-        public ICollection<IFlyweight> GameObjects { get; set; }
+        public ICollection<IEntity> GameObjects { get; set; }
 
-        public void Update()
+        public void Update(double dt)
         {
             foreach (var gameObject in GameObjects)
             {
-                gameObject.UpdateStatus();
+                gameObject.Update(dt);
             }
         }
     }

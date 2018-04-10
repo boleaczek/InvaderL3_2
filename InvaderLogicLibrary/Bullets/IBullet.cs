@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    interface IBullet: IEntity, IObserverSubject, IFlyweight
+    interface IBullet: IEntity, IObserverSubject
     {
     }
 }
