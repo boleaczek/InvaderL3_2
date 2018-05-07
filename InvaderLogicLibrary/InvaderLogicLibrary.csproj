@@ -42,14 +42,17 @@
   <ItemGroup>
     <Compile Include="Enemies\StandardEnemy.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
+    <Compile Include="GameStateManager.cs" />
     <Compile Include="HitBox.cs" />
     <Compile Include="Bullets\IBullet.cs" />
     <Compile Include="Enemies\IEnemy.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="IGameState.cs" />
     <Compile Include="IHitBox.cs" />
     <Compile Include="Observer\IObserver.cs" />
     <Compile Include="Observer\IObserverSubject.cs" />
     <Compile Include="OtherEntities\IPlayer.cs" />
+    <Compile Include="PlayerInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
