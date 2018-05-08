@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace InvaderLogicLibrary
 {
@@ -28,11 +29,10 @@ namespace InvaderLogicLibrary
             this.currentState.OnUpdate(dt);
         }
 
-        public void Draw()
+        public void Draw(Graphics g)
         {
-            this.currentState.OnDraw();
+            this.currentState.OnDraw(g);
         }
-
 
     }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using InvaderLogicLibrary;
 
 namespace InvaderL3_2.Tests
@@ -23,7 +24,7 @@ namespace InvaderL3_2.Tests
             this.OnUpdateCallCount = 0;
         }
 
-        public void OnDraw()
+        public void OnDraw(Graphics g)
         {
             this.OnDrawCallCount++;
         }

@@ -22,9 +22,6 @@ namespace InvaderL3_2.Tests
             bool want = true;
 
             Assert.AreEqual(want, got);
-
-
-
         }
     }
 }

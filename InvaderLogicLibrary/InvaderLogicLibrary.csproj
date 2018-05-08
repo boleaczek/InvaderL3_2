@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,7 @@
     <Compile Include="Enemies\StandardEnemy.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="GameStateManager.cs" />
+    <Compile Include="GameStates\InGameState.cs" />
     <Compile Include="HitBox.cs" />
     <Compile Include="Bullets\IBullet.cs" />
     <Compile Include="Enemies\IEnemy.cs" />
@@ -52,7 +54,7 @@
     <Compile Include="Observer\IObserver.cs" />
     <Compile Include="Observer\IObserverSubject.cs" />
     <Compile Include="OtherEntities\IPlayer.cs" />
-    <Compile Include="PlayerInput.cs" />
+    <Compile Include="KeyboardInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

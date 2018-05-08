@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace InvaderLogicLibrary
 {
@@ -11,6 +12,6 @@ namespace InvaderLogicLibrary
         void OnLoad();
         void OnUnload();
         void OnUpdate(double dt);
-        void OnDraw();
+        void OnDraw(Graphics g);
     }
 }

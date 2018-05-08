@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    public class PlayerInput
+    public class KeyboardInput
     {
         private Dictionary<string, bool> keys;
 
-        public PlayerInput()
+        public KeyboardInput()
         {
             keys = new Dictionary<string, bool>();
         }

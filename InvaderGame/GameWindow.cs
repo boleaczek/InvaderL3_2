@@ -9,33 +9,39 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using InvaderLogicLibrary;
+using InvaderLogicLibrary.GameStates;
 
 namespace InvaderGame
 {
     public partial class Game : Form
     {
         Rectangle screen;
-        PlayerInput input;
+        GameStateManager stateManager;
+        KeyboardInput input;
 
         public Game()
         {
             InitializeComponent();
 
+            IGameState state = new InGameState();
             screen = new Rectangle(0, 0, 800, 600);
-            input = new PlayerInput();
+            stateManager = new GameStateManager(state);
+            input = new KeyboardInput();
         }
 
         // aktualizacja gry
         private void timer1_Tick(object sender, EventArgs e)
         {
-            double dt = 1.0 / 120.0;
+            double dt = 1.0 / 60.0;
+
+            // aktualizacja stanu
+            stateManager.Update(dt);
 
             // aktualizacja labela
             coin_label.Text = String.Format("Delta czas: {0}", dt);
 
             // przerysowanie ekranu gry
             canvas.Refresh();
-           
         }
 
         // rysowanie gry
@@ -46,10 +52,8 @@ namespace InvaderGame
             // wyczyszczenie ekranu
             g.FillRectangle(Brushes.LightBlue, screen);
 
-            // rysowanie jakiegoś prostokąta
-            var rect = new Rectangle(0, 0, 120, 120);
-            g.FillRectangle(Brushes.LightCyan, rect);
- 
+            // rysowanie stanu
+            stateManager.Draw(g);
         }
 
         // zdarzenie wciśnięcia klawisza

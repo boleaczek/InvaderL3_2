@@ -28,9 +28,5 @@ namespace InvaderLogicLibrary
                     this.Y < hitbox.Y + hitbox.Height && 
                     this.Y + this.Height > hitbox.Y);
         }
-
-    
-
-
     }
 }
