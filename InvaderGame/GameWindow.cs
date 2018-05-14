@@ -23,10 +23,11 @@ namespace InvaderGame
         {
             InitializeComponent();
 
-            IGameState state = new InGameState();
+            input = new KeyboardInput();
+            IGameState state = new InGameState(input);
             screen = new Rectangle(0, 0, 800, 600);
             stateManager = new GameStateManager(state);
-            input = new KeyboardInput();
+            
         }
 
         // aktualizacja gry
@@ -60,32 +61,32 @@ namespace InvaderGame
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
-                input.update("Left", true);
+                input.Update("Left", true);
 
             if (e.KeyCode == Keys.Right)
-                input.update("Right", true);
+                input.Update("Right", true);
 
             if (e.KeyCode == Keys.Up)
-                input.update("Up", true);
+                input.Update("Up", true);
 
             if (e.KeyCode == Keys.Down)
-                input.update("Down", true);
+                input.Update("Down", true);
         }
 
         // zdarzenie zwolnienia klawisza
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Left)
-                input.update("Left", false);
+                input.Update("Left", false);
 
             if (e.KeyCode == Keys.Right)
-                input.update("Right", false);
+                input.Update("Right", false);
 
             if (e.KeyCode == Keys.Up)
-                input.update("Up", false);
+                input.Update("Up", false);
 
             if (e.KeyCode == Keys.Down)
-                input.update("Down", false);
+                input.Update("Down", false);
         }
 
 

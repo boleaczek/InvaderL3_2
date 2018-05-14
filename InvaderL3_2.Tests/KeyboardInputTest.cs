@@ -25,9 +25,9 @@ namespace InvaderL3_2.Tests
 
             foreach (var test in tests)
             {
-                kb.update(test.Item1, test.Item2);
+                kb.Update(test.Item1, test.Item2);
 
-                bool got = kb.isPressed(test.Item1),
+                bool got = kb.IsPressed(test.Item1),
                      want = test.Item2;
 
                 Assert.AreEqual(want, got);

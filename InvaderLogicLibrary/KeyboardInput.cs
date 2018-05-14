@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    public class KeyboardInput
+    public class KeyboardInput : IKeyboardInput
     {
         private Dictionary<string, bool> keys;
 
@@ -15,12 +15,12 @@ namespace InvaderLogicLibrary
             keys = new Dictionary<string, bool>();
         }
 
-        public void update(string key, bool value)
+        public void Update(string key, bool value)
         {
             keys[key] = value;
         }
 
-        public bool isPressed(string key)
+        public bool IsPressed(string key)
         {
             if (!keys.ContainsKey(key))
                 return false;

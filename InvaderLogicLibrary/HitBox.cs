@@ -8,12 +8,12 @@ namespace InvaderLogicLibrary
 {
     public class HitBox:IHitBox
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
 
-        public HitBox(int x, int y, int width, int height)
+        public HitBox(double x, double y, double width, double height)
         {
             this.X = x;
             this.Y = y;

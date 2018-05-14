@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,14 @@ namespace InvaderLogicLibrary.Enemies
 {
     class StandardEnemy : IEnemy
     {
-        public IHitBox hitbox { get; set; }
+        public IHitBox HitBox { get; set; }
         bool destroyed;
         public int LeftLimit { get; set; }
         public int RightLimit { get; set; }
         public int Velocity { get; set; }
+        public double Vx { get; set; }
+        public double Vy { get; set; }
+
         enum Direction
         {
             Left,
@@ -20,25 +24,21 @@ namespace InvaderLogicLibrary.Enemies
         }
 
         Direction dir;
-        public void Draw()
-        {
-            throw new NotImplementedException();
-        }
-
+  
         void CalculateDirection()
         {
             switch (dir)
             {
                 case Direction.Right:
-                    hitbox.X += Velocity;
-                    if (hitbox.X < RightLimit)
+                    HitBox.X += Velocity;
+                    if (HitBox.X < RightLimit)
                     {
                         dir = Direction.Right;
                     }
                     break;
                 case Direction.Left:
-                    hitbox.X -= Velocity;
-                    if (hitbox.X > LeftLimit)
+                    HitBox.X -= Velocity;
+                    if (HitBox.X > LeftLimit)
                     {
                         dir = Direction.Left;
                     }
@@ -53,10 +53,15 @@ namespace InvaderLogicLibrary.Enemies
 
         public void Notify(IHitBox hitBox)
         {
-            if (this.hitbox.IsHit(hitbox))
+            if (this.HitBox.IsHit(HitBox))
             {
                 destroyed = true;
             }
+        }
+
+        public void Draw(Graphics g)
+        {
+            throw new NotImplementedException();
         }
     }
 }

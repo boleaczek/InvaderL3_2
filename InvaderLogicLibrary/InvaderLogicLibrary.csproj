@@ -51,10 +51,12 @@
     <Compile Include="IEntity.cs" />
     <Compile Include="IGameState.cs" />
     <Compile Include="IHitBox.cs" />
+    <Compile Include="IKeyboardInput.cs" />
     <Compile Include="Observer\IObserver.cs" />
     <Compile Include="Observer\IObserverSubject.cs" />
     <Compile Include="OtherEntities\IPlayer.cs" />
     <Compile Include="KeyboardInput.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

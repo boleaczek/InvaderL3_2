@@ -57,9 +57,8 @@
             this.coin_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.coin_label.Location = new System.Drawing.Point(26, 620);
             this.coin_label.Name = "coin_label";
-            this.coin_label.Size = new System.Drawing.Size(217, 26);
+            this.coin_label.Size = new System.Drawing.Size(0, 26);
             this.coin_label.TabIndex = 1;
-            this.coin_label.Text = "Zebrane monetki: 0/0";
             // 
             // Game
             // 
