@@ -8,24 +8,13 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary
 {
-    public class Player : IEntity, IObserver
+    public class Player : MovingEntity, IObserver
     {
-        private IKeyboardInput keyboardInput;
+        IKeyboardInput keyboardInput;
 
-        public IHitBox HitBox { get; set; }
-        public double Vx { get; set; }
-        public double Vy { get; set; }
-
-        public Player(IKeyboardInput kb, IHitBox hitbox)
+        public Player(IKeyboardInput kb, IHitBox hitbox) : base(hitbox)
         {
             keyboardInput = kb;
-            HitBox = hitbox;
-        }
-
-        public void Draw(Graphics g)
-        {
-            var rect = new Rectangle((int)HitBox.X, (int)HitBox.Y, (int)HitBox.Width, (int)HitBox.Height);
-            g.FillRectangle(Brushes.LightCyan, rect);
         }
 
         public void Notify(IHitBox hitBox)
@@ -33,19 +22,15 @@ namespace InvaderLogicLibrary
             throw new NotImplementedException();
         }
 
-        public void Update(double dt)
+        protected override Direction DetermineDirection()
         {
             if (keyboardInput.IsPressed("Left"))
-                HitBox.X -= Vx * dt;
-
-            if (keyboardInput.IsPressed("Right"))
-                HitBox.X += Vx * dt;
-
-            if (HitBox.X < 0)
-                HitBox.X = 0;
-
-            if (HitBox.X + HitBox.Width > 800)
-                HitBox.X = 800 - HitBox.Width;
+                return Direction.Left;
+            else if (keyboardInput.IsPressed("Right"))
+                return Direction.Right;
+            else
+                return Direction.None;
+                
         }
     }
 }

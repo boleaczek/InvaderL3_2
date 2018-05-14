@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using InvaderLogicLibrary.Enemies;
 
 namespace InvaderLogicLibrary.GameStates
 {
@@ -11,7 +12,7 @@ namespace InvaderLogicLibrary.GameStates
     {      
         private IEntity player;
         private IKeyboardInput keyboardInput;
-
+        private Flyweight.Flyweight enemyFlyweight;
 
         public InGameState(IKeyboardInput kb)
         {
@@ -21,6 +22,7 @@ namespace InvaderLogicLibrary.GameStates
         public void OnDraw(Graphics g)
         {
             player.Draw(g);
+            enemyFlyweight.Draw(g);
         }
 
         public void OnLoad()
@@ -35,6 +37,20 @@ namespace InvaderLogicLibrary.GameStates
             player = new Player(keyboardInput, hitBox);
             player.Vx = 500;
             player.Vy = 400;
+
+            enemyFlyweight = new Flyweight.Flyweight();
+            enemyFlyweight.GameObjects = new List<IEntity>() {
+                new StandardEnemy(new HitBox(150, 150, 32, 32), 50, 500)
+                {
+                    Vx = 100,
+                    Vy = 400
+                },
+                new StandardEnemy(new HitBox(250, 250, 32, 32), 50, 500)
+                {
+                    Vx = 100,
+                    Vy = 400
+                }};
+            
         }
 
         public void OnUnload()
@@ -45,6 +61,7 @@ namespace InvaderLogicLibrary.GameStates
         public void OnUpdate(double dt)
         {
             player.Update(dt);
+            enemyFlyweight.Update(dt);
         }
     }
 }

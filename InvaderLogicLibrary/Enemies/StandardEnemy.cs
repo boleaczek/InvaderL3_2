@@ -7,48 +7,18 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Enemies
 {
-    class StandardEnemy : IEnemy
+    class StandardEnemy : MovingEntity, IEnemy
     {
-        public IHitBox HitBox { get; set; }
         bool destroyed;
         public int LeftLimit { get; set; }
         public int RightLimit { get; set; }
-        public int Velocity { get; set; }
-        public double Vx { get; set; }
-        public double Vy { get; set; }
+        Direction direction;
 
-        enum Direction
+        public StandardEnemy(IHitBox hb, int leftLimit, int rightLimit): base(hb)
         {
-            Left,
-            Right
-        }
-
-        Direction dir;
-  
-        void CalculateDirection()
-        {
-            switch (dir)
-            {
-                case Direction.Right:
-                    HitBox.X += Velocity;
-                    if (HitBox.X < RightLimit)
-                    {
-                        dir = Direction.Right;
-                    }
-                    break;
-                case Direction.Left:
-                    HitBox.X -= Velocity;
-                    if (HitBox.X > LeftLimit)
-                    {
-                        dir = Direction.Left;
-                    }
-                    break;
-            }
-        }
-
-        public void Update(double dt)
-        {
-            CalculateDirection();
+            LeftLimit = leftLimit;
+            RightLimit = rightLimit;
+            direction = Direction.Left;
         }
 
         public void Notify(IHitBox hitBox)
@@ -59,9 +29,18 @@ namespace InvaderLogicLibrary.Enemies
             }
         }
 
-        public void Draw(Graphics g)
+        protected override MovingEntity.Direction DetermineDirection()
         {
-            throw new NotImplementedException();
+            if (HitBox.X < LeftLimit)
+            {
+                direction = Direction.Right;
+            }
+            else if(HitBox.X + HitBox.Width > RightLimit)
+            {
+                direction = Direction.Left;
+            }
+
+            return direction;
         }
     }
 }

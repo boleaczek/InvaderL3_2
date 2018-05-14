@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,14 @@ namespace InvaderLogicLibrary.Flyweight
             foreach (var gameObject in GameObjects)
             {
                 gameObject.Update(dt);
+            }
+        }
+
+        public void Draw(Graphics g)
+        {
+            foreach (var gameObject in GameObjects)
+            {
+                gameObject.Draw(g);
             }
         }
     }
