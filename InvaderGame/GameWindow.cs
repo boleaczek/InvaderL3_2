@@ -27,7 +27,6 @@ namespace InvaderGame
             IGameState state = new InGameState(input);
             screen = new Rectangle(0, 0, 800, 600);
             stateManager = new GameStateManager(state);
-            
         }
 
         // aktualizacja gry
