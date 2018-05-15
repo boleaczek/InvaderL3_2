@@ -14,7 +14,7 @@ namespace InvaderLogicLibrary
         public double Vx { get; set; }
         public double Vy { get; set; }
 
-        protected enum Direction
+        public enum Direction
         {
             Left,
             Right,
