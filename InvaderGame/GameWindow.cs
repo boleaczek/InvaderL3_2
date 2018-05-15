@@ -24,9 +24,15 @@ namespace InvaderGame
             InitializeComponent();
 
             input = new KeyboardInput();
+            MenuState menu = new MenuState();
+            
             IGameState state = new InGameState(input);
             screen = new Rectangle(0, 0, 800, 600);
-            stateManager = new GameStateManager(state);
+            stateManager = new GameStateManager(menu);
+
+            menu.StateManager = stateManager;
+            menu.NextState = state;
+            menu.Input = input;
         }
 
         // aktualizacja gry
@@ -38,7 +44,7 @@ namespace InvaderGame
             stateManager.Update(dt);
 
             // aktualizacja labela
-            coin_label.Text = String.Format("Delta czas: {0}", dt);
+            //coin_label.Text = String.Format("Delta czas: {0}", dt);
 
             // przerysowanie ekranu gry
             canvas.Refresh();
@@ -70,6 +76,9 @@ namespace InvaderGame
 
             if (e.KeyCode == Keys.Down)
                 input.Update("Down", true);
+
+            if (e.KeyCode == Keys.Space)
+                input.Update("Space", true);
         }
 
         // zdarzenie zwolnienia klawisza
@@ -86,6 +95,9 @@ namespace InvaderGame
 
             if (e.KeyCode == Keys.Down)
                 input.Update("Down", false);
+
+            if (e.KeyCode == Keys.Space)
+                input.Update("Space", false);
         }
 
 

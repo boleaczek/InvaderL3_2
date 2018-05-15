@@ -37,7 +37,8 @@
             // 
             // canvas
             // 
-            this.canvas.Location = new System.Drawing.Point(31, 9);
+            this.canvas.Cursor = System.Windows.Forms.Cursors.Default;
+            this.canvas.Location = new System.Drawing.Point(0, 0);
             this.canvas.Margin = new System.Windows.Forms.Padding(0);
             this.canvas.Name = "canvas";
             this.canvas.Size = new System.Drawing.Size(800, 600);
@@ -64,9 +65,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 655);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.coin_label);
             this.Controls.Add(this.canvas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Game";
@@ -80,10 +82,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox canvas;
         private System.Windows.Forms.Timer mainLoop;
         private System.Windows.Forms.Label coin_label;
+        private System.Windows.Forms.PictureBox canvas;
     }
 }
 

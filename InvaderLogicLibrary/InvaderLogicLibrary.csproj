@@ -45,6 +45,7 @@
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="GameStateManager.cs" />
     <Compile Include="GameStates\InGameState.cs" />
+    <Compile Include="GameStates\MenuState.cs" />
     <Compile Include="HitBox.cs" />
     <Compile Include="Bullets\IBullet.cs" />
     <Compile Include="Enemies\IEnemy.cs" />
