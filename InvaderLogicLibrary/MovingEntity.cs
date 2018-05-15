@@ -14,13 +14,15 @@ namespace InvaderLogicLibrary
         public double Vx { get; set; }
         public double Vy { get; set; }
 
-        protected enum Direction
+        public enum Direction
         {
             Left,
             Right,
+            Up,
+            Down,
             None
         }
-        
+
         public MovingEntity(IHitBox hitbox)
         {
             HitBox = hitbox;
@@ -35,22 +37,32 @@ namespace InvaderLogicLibrary
         public void Update(double dt)
         {
             Direction direction = DetermineDirection();
-            if (direction == Direction.Left)
+            switch (direction)
             {
-                HitBox.X -= Vx * dt;
-            }
-            else if (direction == Direction.Right)
-            {
-                HitBox.X += Vx * dt;
+                case Direction.Left:
+                    HitBox.X -= Vx * dt;
+                    break;
+                case Direction.Right:
+                    HitBox.X += Vx * dt;
+                    break;
+                case Direction.Up:
+                    HitBox.Y -= Vy * dt;
+                    break;
+                case Direction.Down:
+                    HitBox.Y += Vy * dt;
+                    break;
             }
 
-            if (HitBox.X < 0)
-                HitBox.X = 0;
-
-            if (HitBox.X + HitBox.Width > 800)
-                HitBox.X = 800 - HitBox.Width;
+            HandleColision();
         }
 
         protected abstract Direction DetermineDirection();
+        protected virtual void HandleColision()
+        {
+            if (HitBox.X < 0)
+                HitBox.X = 0;
+            else if (HitBox.X + HitBox.Width > 800)
+                HitBox.X = 800 - HitBox.Width;
+        }
     }
 }
