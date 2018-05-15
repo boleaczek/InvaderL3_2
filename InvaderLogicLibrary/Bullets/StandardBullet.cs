@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Bullets
 {
-    class StandardBullet : MovingEntity, IBullet
+    public class StandardBullet : MovingEntity, IBullet
     {
         Direction direction;
         int limit;

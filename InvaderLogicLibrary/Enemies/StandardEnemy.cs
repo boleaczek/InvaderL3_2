@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Enemies
 {
-    class StandardEnemy : MovingEntity, IEnemy
+    public class StandardEnemy : MovingEntity, IEnemy
     {
         bool destroyed;
         public int LeftLimit { get; set; }

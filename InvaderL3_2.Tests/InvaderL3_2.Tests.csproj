@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StandardBulletTest.cs" />
+    <Compile Include="StandardEnemyTest.cs" />
     <Compile Include="GameStateManagerTest.cs" />
     <Compile Include="HitBoxTest.cs" />
     <Compile Include="KeyboardInputTest.cs" />
