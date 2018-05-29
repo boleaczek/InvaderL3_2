@@ -11,45 +11,49 @@ namespace InvaderLogicLibrary
     {
         int startX;
         int startY;
-        int spaceX;
-        int spaceY;
+        int space;
         int rows;
         int cols;
-        int sizeX;
-        int sizeY;
+        int size;
 
-        public EnemySpawner(int startX, int startY, int spaceX, int spaceY, int rows, int cols, int sizeX, int sizeY)
+        public EnemySpawner(int startX, int startY, int space, int rows, int cols, int size)
         {
             this.rows = rows;
             this.cols = cols;
-            this.spaceY = spaceY;
-            this.spaceX = spaceX;
+            this.space = space;
+            this.size = size;
             this.startY = startY;
             this.startX = startX;
-            this.sizeX = sizeX;
-            this.sizeY = sizeY;
+   
         }
 
         public ICollection<IEntity> Spawn()
         {
             ICollection<IEntity> enemies = new List<IEntity>();
-            int currentX = startX;
             int currentY = startY;
-            //
+            int middle = startX;
+            int leftLimit = middle - space;
+            int rightLimit = middle + space + size;
+
             for (int i = 0; i < cols; i++)
             {
                 for (int j = 0; j < rows; j++)
                 {
-                    int nextX = currentX + spaceX;
-                    HitBox hb = new HitBox(currentX, currentY, sizeX, sizeY);
-                    enemies.Add(new StandardEnemy(hb, currentX, nextX));
-                    currentX = nextX + sizeX;
+                    HitBox hb = new HitBox(middle, currentY, size, size);
+                    StandardEnemy standardEnemy = new StandardEnemy(hb, leftLimit, rightLimit);
+                    enemies.Add(standardEnemy);
+                    leftLimit = rightLimit;
+                    middle = leftLimit + space;
+                    rightLimit = middle + space + size;
                 }
-                currentX = startX;
-                currentY += spaceY + sizeY;
+                currentY += space;
             }
 
             return enemies;
         }
     }
 }
+
+//space:50, size:50, start: 400
+//middle1 = 400, left1 = 350, right1 = 500
+//middle2 = 500, left2 = 400, right2 = 600

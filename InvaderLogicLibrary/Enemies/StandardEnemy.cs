@@ -19,12 +19,12 @@ namespace InvaderLogicLibrary.Enemies
             LeftLimit = leftLimit;
             RightLimit = rightLimit;
             direction = Direction.Left;
-            base.Vx = 100;
+            Vx = 100;
         }
 
         public void Notify(IHitBox hitBox)
         {
-            if (this.HitBox.IsHit(HitBox))
+            if (HitBox.IsHit(HitBox))
             {
                 destroyed = true;
             }
