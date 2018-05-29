@@ -44,25 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bullets\PlayerBullet.cs" />
-    <Compile Include="Bullets\StandardBullet.cs" />
-    <Compile Include="Enemies\StandardEnemy.cs" />
+    <Compile Include="Entities\Bullets\PlayerBullet.cs" />
+    <Compile Include="Entities\Bullets\StandardBullet.cs" />
+    <Compile Include="Entities\Enemies\StandardEnemy.cs" />
     <Compile Include="EnemySpawner.cs" />
+    <Compile Include="Entities\ShootingEntity.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="GameStateManager.cs" />
     <Compile Include="GameStates\InGameState.cs" />
     <Compile Include="HitBox.cs" />
-    <Compile Include="Bullets\IBullet.cs" />
-    <Compile Include="Enemies\IEnemy.cs" />
-    <Compile Include="IEntity.cs" />
+    <Compile Include="Entities\Bullets\IBullet.cs" />
+    <Compile Include="Entities\Enemies\IEnemy.cs" />
+    <Compile Include="Entities\IEntity.cs" />
     <Compile Include="IGameState.cs" />
     <Compile Include="IHitBox.cs" />
     <Compile Include="IKeyboardInput.cs" />
-    <Compile Include="MovingEntity.cs" />
+    <Compile Include="Entities\MovingEntity.cs" />
     <Compile Include="Observer\IObserver.cs" />
     <Compile Include="Observer\IObserverSubject.cs" />
     <Compile Include="KeyboardInput.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Entities\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

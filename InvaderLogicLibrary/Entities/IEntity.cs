@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary
+namespace InvaderLogicLibrary.Entities
 {
     public interface IEntity
     {

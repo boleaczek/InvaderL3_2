@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary.Enemies
+namespace InvaderLogicLibrary.Entities.Enemies
 {
     public class StandardEnemy : MovingEntity, IEnemy
     {

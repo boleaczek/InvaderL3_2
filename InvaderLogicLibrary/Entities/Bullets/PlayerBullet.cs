@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace InvaderLogicLibrary.Bullets
+namespace InvaderLogicLibrary.Entities.Bullets
 {
     public class PlayerBullet : MovingEntity, IBullet
     {
@@ -38,7 +38,7 @@ namespace InvaderLogicLibrary.Bullets
 
         new public void Draw(Graphics g)
         {
-            var rect = new Rectangle((int)HitBox.X, (int)HitBox.Y, (int)HitBox.Width, (int)HitBox.Height);
+            var rect = new Rectangle(HitBox.X, HitBox.Y, (int)HitBox.Width, (int)HitBox.Height);
             g.FillRectangle(Brushes.PaleVioletRed, rect);
         }
 

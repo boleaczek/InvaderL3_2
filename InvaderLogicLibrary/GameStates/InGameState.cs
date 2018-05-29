@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using InvaderLogicLibrary.Enemies;
+using InvaderLogicLibrary.Entities;
 
 namespace InvaderLogicLibrary.GameStates
 {

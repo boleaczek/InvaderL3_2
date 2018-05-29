@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary
+namespace InvaderLogicLibrary.Entities
 {
     public abstract class MovingEntity : IEntity
     {
@@ -36,6 +36,12 @@ namespace InvaderLogicLibrary
 
         public void Update(double dt)
         {
+            Move(dt);
+            HandleColision();
+        }
+
+        protected virtual void Move(double dt)
+        {
             Direction direction = DetermineDirection();
             switch (direction)
             {
@@ -52,11 +58,10 @@ namespace InvaderLogicLibrary
                     HitBox.Y += (int)(Vy * dt);
                     break;
             }
-
-            HandleColision();
         }
 
         protected abstract Direction DetermineDirection();
+
         protected virtual void HandleColision()
         {
             if (HitBox.X < 0)

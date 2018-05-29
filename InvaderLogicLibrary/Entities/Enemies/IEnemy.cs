@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary.Enemies
+namespace InvaderLogicLibrary.Entities.Enemies
 {
     interface IEnemy : IEntity, IObserver
     {
