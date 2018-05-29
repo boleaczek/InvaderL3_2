@@ -53,8 +53,8 @@ namespace InvaderLogicLibrary
                     double bulletWidth = 4.0,
                            bulletHeight = 30.0;
 
-                    double bulletX = HitBox.X + (HitBox.Width / 2) - (bulletWidth / 2),
-                           bulletY = HitBox.Y - bulletHeight / 2;
+                    int bulletX = HitBox.X + (int)((HitBox.Width / 2) - (bulletWidth / 2)),
+                           bulletY = HitBox.Y - (int)(bulletHeight / 2);
 
                     IHitBox hitbox = new HitBox(bulletX, bulletY, bulletWidth, bulletHeight);
                     StandardBullet bullet = new StandardBullet(hitbox, Direction.Up, 0);

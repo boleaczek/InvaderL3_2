@@ -27,13 +27,21 @@ namespace InvaderLogicLibrary
    
         }
 
+        (int middle, int leftLimit, int rightLimit) GetStartingPosition(int startX)
+        {
+            return (startX, startX - space, startX + space + size);
+        }
+
+        (int middle, int leftLimit, int rightLimit) AdvancePosition(int rightLimit)
+        {
+            return (rightLimit + space, rightLimit, rightLimit + (space * 2) + size);
+        }
+
         public ICollection<IEntity> Spawn()
         {
             ICollection<IEntity> enemies = new List<IEntity>();
             int currentY = startY;
-            int middle = startX;
-            int leftLimit = middle - space;
-            int rightLimit = middle + space + size;
+            (int middle, int leftLimit, int rightLimit) = GetStartingPosition(startX);
 
             for (int i = 0; i < cols; i++)
             {
@@ -42,18 +50,13 @@ namespace InvaderLogicLibrary
                     HitBox hb = new HitBox(middle, currentY, size, size);
                     StandardEnemy standardEnemy = new StandardEnemy(hb, leftLimit, rightLimit);
                     enemies.Add(standardEnemy);
-                    leftLimit = rightLimit;
-                    middle = leftLimit + space;
-                    rightLimit = middle + space + size;
+                    (middle, leftLimit, rightLimit) = AdvancePosition(rightLimit);
                 }
-                currentY += space;
+                currentY += space + size;
+                (middle, leftLimit, rightLimit) = GetStartingPosition(startX);
             }
 
             return enemies;
         }
     }
 }
-
-//space:50, size:50, start: 400
-//middle1 = 400, left1 = 350, right1 = 500
-//middle2 = 500, left2 = 400, right2 = 600
