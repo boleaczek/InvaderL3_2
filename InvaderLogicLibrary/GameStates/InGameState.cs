@@ -39,22 +39,10 @@ namespace InvaderLogicLibrary.GameStates
             player.Vy = 400;
 
             enemyFlyweight = new Flyweight.Flyweight();
-            //enemyFlyweight.GameObjects = new List<IEntity>() {
-            //    new StandardEnemy(new HitBox(150, 150, 32, 32), 50, 500)
-            //    {
-            //        Vx = 100,
-            //        Vy = 400
-            //    },
-            //    new StandardEnemy(new HitBox(250, 250, 32, 32), 50, 500)
-            //    {
-            //        Vx = 100,
-            //        Vy = 400
-            //    }};
 
-            EnemySpawner enemySpawner = new EnemySpawner(200, 200, 50, 100, 5, 5, 10, 10);
-            enemySpawner = new EnemySpawner(100, 100, 100, 50, 5, 4, 40, 40);
+            EnemySpawner spawner = new EnemySpawner(100, 50, 50, 5, 1, 50);
             
-            enemyFlyweight.GameObjects = enemySpawner.Spawn();
+            enemyFlyweight.GameObjects = spawner.Spawn();
 
         }
 

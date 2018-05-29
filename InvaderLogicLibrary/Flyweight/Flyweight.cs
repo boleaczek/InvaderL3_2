@@ -10,12 +10,14 @@ namespace InvaderLogicLibrary.Flyweight
     class Flyweight
     {
         public ICollection<IEntity> GameObjects { get; set; }
+        int iter = 0;
 
         public void Update(double dt)
         {
             foreach (var gameObject in GameObjects)
             {
                 gameObject.Update(dt);
+                iter++;
             }
         }
 
