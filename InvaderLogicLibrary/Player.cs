@@ -30,7 +30,7 @@ namespace InvaderLogicLibrary
                 return Direction.Right;
             else
                 return Direction.None;
-                
+
         }
     }
 }

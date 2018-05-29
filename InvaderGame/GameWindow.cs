@@ -50,7 +50,7 @@ namespace InvaderGame
             Graphics g = e.Graphics;
 
             // wyczyszczenie ekranu
-            g.FillRectangle(Brushes.LightBlue, screen);
+            g.FillRectangle(Brushes.White, screen);
 
             // rysowanie stanu
             stateManager.Draw(g);
@@ -70,6 +70,9 @@ namespace InvaderGame
 
             if (e.KeyCode == Keys.Down)
                 input.Update("Down", true);
+
+            if (e.KeyCode == Keys.Space)
+                input.Update("Space", true);
         }
 
         // zdarzenie zwolnienia klawisza
@@ -86,6 +89,9 @@ namespace InvaderGame
 
             if (e.KeyCode == Keys.Down)
                 input.Update("Down", false);
+
+            if (e.KeyCode == Keys.Space)
+                input.Update("Space", false);
         }
 
 

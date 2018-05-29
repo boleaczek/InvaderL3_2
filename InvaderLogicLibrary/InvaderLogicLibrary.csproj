@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Bullets\StandardBullet.cs" />
     <Compile Include="Enemies\StandardEnemy.cs" />
+    <Compile Include="EnemySpawner.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="GameStateManager.cs" />
     <Compile Include="GameStates\InGameState.cs" />

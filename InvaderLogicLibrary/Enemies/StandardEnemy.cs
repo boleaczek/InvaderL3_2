@@ -19,6 +19,7 @@ namespace InvaderLogicLibrary.Enemies
             LeftLimit = leftLimit;
             RightLimit = rightLimit;
             direction = Direction.Left;
+            base.Vx = 100;
         }
 
         public void Notify(IHitBox hitBox)
@@ -31,11 +32,11 @@ namespace InvaderLogicLibrary.Enemies
 
         protected override MovingEntity.Direction DetermineDirection()
         {
-            if (HitBox.X < LeftLimit)
+            if (HitBox.X <= LeftLimit)
             {
                 direction = Direction.Right;
             }
-            else if(HitBox.X + HitBox.Width > RightLimit)
+            else if(HitBox.X + HitBox.Width >= RightLimit)
             {
                 direction = Direction.Left;
             }
