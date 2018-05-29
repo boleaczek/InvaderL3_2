@@ -14,14 +14,11 @@ namespace InvaderLogicLibrary.Entities
     {
         IKeyboardInput keyboardInput;
         Flyweight.Flyweight entities;
-        
-        
 
-        public Player(IKeyboardInput kb, IHitBox hitbox, Flyweight.Flyweight entityFlyweight) : base(entityFlyweight, hitbox, 8.0)
+        public Player(IKeyboardInput kb, IHitBox hitbox, Flyweight.Flyweight entityFlyweight) : base(entityFlyweight, hitbox, 8.0, Direction.Up)
         {
             keyboardInput = kb;
             entities = entityFlyweight;
-            
         }
 
         public void Notify(IHitBox hitBox)

@@ -38,7 +38,7 @@ namespace InvaderLogicLibrary
             return (rightLimit + space, rightLimit, rightLimit + (space * 2) + size);
         }
 
-        public ICollection<IEntity> Spawn()
+        public ICollection<IEntity> Spawn(Flyweight.Flyweight flyweight)
         {
             ICollection<IEntity> enemies = new List<IEntity>();
             int currentY = startY;
@@ -49,7 +49,7 @@ namespace InvaderLogicLibrary
                 for (int j = 0; j < rows; j++)
                 {
                     HitBox hb = new HitBox(middle, currentY, size, size);
-                    StandardEnemy standardEnemy = new StandardEnemy(hb, leftLimit, rightLimit);
+                    StandardEnemy standardEnemy = new StandardEnemy(hb, leftLimit, rightLimit, flyweight);
                     enemies.Add(standardEnemy);
                     (middle, leftLimit, rightLimit) = AdvancePosition(rightLimit);
                 }

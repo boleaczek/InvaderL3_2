@@ -12,13 +12,14 @@ namespace InvaderLogicLibrary.Entities
         Flyweight.Flyweight entities;
         double lastShoot;
         double fireRate;
+        Direction bulletsDirection;
 
-        public ShotingEntity(Flyweight.Flyweight entities, IHitBox hitbox, double fireRate) : base(hitbox)
+        public ShotingEntity(Flyweight.Flyweight entities, IHitBox hitbox, double fireRate, Direction dir) : base(hitbox)
         {
             this.entities = entities;
             this.fireRate = 8.0;
             lastShoot = 0;
-            
+            bulletsDirection = dir;
         }
 
         new public void Update(double dt)
@@ -44,7 +45,7 @@ namespace InvaderLogicLibrary.Entities
                        bulletY = HitBox.Y - (int)(bulletHeight / 2);
 
                 IHitBox hitbox = new HitBox(bulletX, bulletY, bulletWidth, bulletHeight);
-                StandardBullet bullet = new StandardBullet(hitbox, Direction.Up, 0)
+                StandardBullet bullet = new StandardBullet(hitbox, bulletsDirection, 0)
                 {
                     Vy = 500
                 };

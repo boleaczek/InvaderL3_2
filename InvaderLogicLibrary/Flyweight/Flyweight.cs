@@ -15,10 +15,9 @@ namespace InvaderLogicLibrary.Flyweight
 
         public void Update(double dt)
         {
-            foreach (var gameObject in GameObjects)
+            for(int i = 0; i < GameObjects.Count; i++)
             {
-                gameObject.Update(dt);
-                iter++;
+                GameObjects.ElementAt(i).Update(dt);
             }
         }
 

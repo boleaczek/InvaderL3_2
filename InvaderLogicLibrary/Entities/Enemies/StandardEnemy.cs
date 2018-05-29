@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Entities.Enemies
 {
-    public class StandardEnemy : MovingEntity, IEnemy
+    public class StandardEnemy : ShotingEntity, IEnemy
     {
         bool destroyed;
         public int LeftLimit { get; set; }
         public int RightLimit { get; set; }
         Direction direction;
 
-        public StandardEnemy(IHitBox hb, int leftLimit, int rightLimit): base(hb)
+        public StandardEnemy(IHitBox hb, int leftLimit, int rightLimit, Flyweight.Flyweight flyweight): base(flyweight, hb, 1.0, Direction.Down)
         {
             LeftLimit = leftLimit;
             RightLimit = rightLimit;
@@ -42,6 +42,11 @@ namespace InvaderLogicLibrary.Entities.Enemies
             }
 
             return direction;
+        }
+
+        protected override bool IsShooting()
+        {
+            return true;
         }
     }
 }

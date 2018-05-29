@@ -38,7 +38,7 @@ namespace InvaderLogicLibrary.GameStates
 
             EnemySpawner spawner = new EnemySpawner(150, 50, 50, 4, 3, 50);
             
-            entityFlyweight.GameObjects = spawner.Spawn();
+            entityFlyweight.GameObjects = spawner.Spawn(entityFlyweight);
 
             player = new Player(keyboardInput, hitBox, entityFlyweight);
             player.Vx = 500;
