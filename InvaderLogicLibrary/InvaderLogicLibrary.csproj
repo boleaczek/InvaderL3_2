@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bullets\PlayerBullet.cs" />
     <Compile Include="Bullets\StandardBullet.cs" />
     <Compile Include="Enemies\StandardEnemy.cs" />
     <Compile Include="EnemySpawner.cs" />

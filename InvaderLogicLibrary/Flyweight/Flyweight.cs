@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Flyweight
 {
-    class Flyweight
+    public class Flyweight
     {
         public ICollection<IEntity> GameObjects { get; set; }
 

@@ -50,7 +50,7 @@ namespace InvaderGame
             Graphics g = e.Graphics;
 
             // wyczyszczenie ekranu
-            g.FillRectangle(Brushes.White, screen);
+            g.FillRectangle(Brushes.LightGreen, screen);
 
             // rysowanie stanu
             stateManager.Draw(g);

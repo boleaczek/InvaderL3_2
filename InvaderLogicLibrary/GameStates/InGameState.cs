@@ -10,9 +10,9 @@ namespace InvaderLogicLibrary.GameStates
 {
     public class InGameState : IGameState
     {
-        private IEntity player;
+        private Player player;
         private IKeyboardInput keyboardInput;
-        private Flyweight.Flyweight enemyFlyweight;
+        private Flyweight.Flyweight entityFlyweight;
 
         public InGameState(IKeyboardInput kb)
         {
@@ -21,8 +21,8 @@ namespace InvaderLogicLibrary.GameStates
 
         public void OnDraw(Graphics g)
         {
+            entityFlyweight.Draw(g);
             player.Draw(g);
-            enemyFlyweight.Draw(g);
         }
 
         public void OnLoad()
@@ -34,28 +34,16 @@ namespace InvaderLogicLibrary.GameStates
 
             IHitBox hitBox = new HitBox(startX, startY, width, height);
 
-            player = new Player(keyboardInput, hitBox);
-            player.Vx = 500;
-            player.Vy = 400;
-
-            enemyFlyweight = new Flyweight.Flyweight();
-            //enemyFlyweight.GameObjects = new List<IEntity>() {
-            //    new StandardEnemy(new HitBox(150, 150, 32, 32), 50, 500)
-            //    {
-            //        Vx = 100,
-            //        Vy = 400
-            //    },
-            //    new StandardEnemy(new HitBox(250, 250, 32, 32), 50, 500)
-            //    {
-            //        Vx = 100,
-            //        Vy = 400
-            //    }};
+            entityFlyweight = new Flyweight.Flyweight();
 
             EnemySpawner enemySpawner = new EnemySpawner(200, 200, 50, 100, 5, 5, 10, 10);
             enemySpawner = new EnemySpawner(100, 100, 100, 50, 5, 4, 40, 40);
             
-            enemyFlyweight.GameObjects = enemySpawner.Spawn();
+            entityFlyweight.GameObjects = enemySpawner.Spawn();
 
+            player = new Player(keyboardInput, hitBox, entityFlyweight);
+            player.Vx = 500;
+            player.Vy = 400;
         }
 
         public void OnUnload()
@@ -66,7 +54,7 @@ namespace InvaderLogicLibrary.GameStates
         public void OnUpdate(double dt)
         {
             player.Update(dt);
-            enemyFlyweight.Update(dt);
+            entityFlyweight.Update(dt);
         }
     }
 }
