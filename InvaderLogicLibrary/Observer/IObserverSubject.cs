@@ -8,6 +8,7 @@ namespace InvaderLogicLibrary.Observer
 {
     interface IObserverSubject
     {
+        ICollection<IObserver> Observers { get; set; }
         void Notify();
     }
 }

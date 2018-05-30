@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using InvaderLogicLibrary.Observer;
 
 namespace InvaderLogicLibrary.Entities.Bullets
 {
@@ -12,6 +13,8 @@ namespace InvaderLogicLibrary.Entities.Bullets
         Direction direction;
         int limit;
         public bool IsDestroyed;
+
+        public ICollection<IObserver> Observers { get; set; }
 
         public StandardBullet(IHitBox hb, Direction dir, int limitY) : base(hb)
         {
@@ -22,7 +25,10 @@ namespace InvaderLogicLibrary.Entities.Bullets
 
         public void Notify()
         {
-            throw new NotImplementedException();
+            foreach (IObserver observer in Observers)
+            {
+                observer.Notify(HitBox);
+            }
         }
 
         protected override Direction DetermineDirection()

@@ -10,5 +10,6 @@ namespace InvaderLogicLibrary.Entities.Enemies
 {
     interface IEnemy : IEntity, IObserver
     {
+        
     }
 }

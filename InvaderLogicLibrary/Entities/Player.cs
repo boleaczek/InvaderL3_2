@@ -23,7 +23,7 @@ namespace InvaderLogicLibrary.Entities
 
         public void Notify(IHitBox hitBox)
         {
-            throw new NotImplementedException();
+            
         }
 
         protected override Direction DetermineDirection()

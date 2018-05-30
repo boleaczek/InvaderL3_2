@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using InvaderLogicLibrary.Observer;
 
 namespace InvaderLogicLibrary.Entities.Bullets
 {
     public class PlayerBullet : MovingEntity, IBullet
     {
         public bool IsDestroyed;
+
+        public ICollection<IObserver> Observers { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public PlayerBullet(IHitBox hb, double speed) : base(hb)
         {

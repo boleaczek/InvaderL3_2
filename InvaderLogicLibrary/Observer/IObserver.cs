@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Observer
 {
-    interface IObserver
+    public interface IObserver
     {
         void Notify(IHitBox hitBox);
     }
