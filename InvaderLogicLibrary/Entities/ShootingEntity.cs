@@ -1,4 +1,5 @@
 ﻿using InvaderLogicLibrary.Entities.Bullets;
+using InvaderLogicLibrary.Observer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,15 @@ namespace InvaderLogicLibrary.Entities
         double fireRate;
         Direction bulletsDirection;
 
-        public ShotingEntity(Flyweight.Flyweight entities, IHitBox hitbox, double fireRate, Direction dir) : base(hitbox)
+        public ICollection<IObserver> EnemyEntities { get; set; }
+
+        public ShotingEntity(Flyweight.Flyweight entities, IHitBox hitbox, double fireRate, Direction dir, ICollection<IObserver> gameEntities) : base(hitbox)
         {
             this.entities = entities;
             this.fireRate = 8.0;
             lastShoot = 0;
             bulletsDirection = dir;
+            EnemyEntities = gameEntities;
         }
 
         new public void Update(double dt)
@@ -45,7 +49,7 @@ namespace InvaderLogicLibrary.Entities
                        bulletY = HitBox.Y - (int)(bulletHeight / 2);
 
                 IHitBox hitbox = new HitBox(bulletX, bulletY, bulletWidth, bulletHeight);
-                StandardBullet bullet = new StandardBullet(hitbox, bulletsDirection, 0)
+                StandardBullet bullet = new StandardBullet(hitbox, bulletsDirection, 0, EnemyEntities)
                 {
                     Vy = 500
                 };

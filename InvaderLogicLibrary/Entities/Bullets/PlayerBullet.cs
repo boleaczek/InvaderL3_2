@@ -45,5 +45,24 @@ namespace InvaderLogicLibrary.Entities.Bullets
             g.FillRectangle(Brushes.PaleVioletRed, rect);
         }
 
+        public bool IsHit(IBullet bullet)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Destroy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HitSignal()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DestroyedSignal(IObserver observer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

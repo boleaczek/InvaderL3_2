@@ -15,9 +15,16 @@ namespace InvaderLogicLibrary.Flyweight
 
         public void Update(double dt)
         {
-            for(int i = 0; i < GameObjects.Count; i++)
+            for (int i = 0; i < GameObjects.Count; i++)
             {
-                GameObjects.ElementAt(i).Update(dt);
+                if (!GameObjects.ElementAt(i).IsDestroyed)
+                {
+                    GameObjects.ElementAt(i).Update(dt);
+                }
+                else
+                {
+                    GameObjects.Remove(GameObjects.ElementAt(i));
+                }
             }
         }
 

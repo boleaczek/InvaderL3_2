@@ -13,17 +13,17 @@ namespace InvaderLogicLibrary.Entities
     public class Player : ShotingEntity, IObserver
     {
         IKeyboardInput keyboardInput;
-        Flyweight.Flyweight entities;
+        int life = 10;
 
-        public Player(IKeyboardInput kb, IHitBox hitbox, Flyweight.Flyweight entityFlyweight) : base(entityFlyweight, hitbox, 8.0, Direction.Up)
+        public Player(IKeyboardInput kb, IHitBox hitbox, Flyweight.Flyweight entityFlyweight, ICollection<IObserver> enemyEntities) : 
+            base(entityFlyweight, hitbox, 8.0, Direction.Up, enemyEntities)
         {
             keyboardInput = kb;
-            entities = entityFlyweight;
         }
 
-        public void Notify(IHitBox hitBox)
+        public void Notify(IBullet bullet)
         {
-            
+     
         }
 
         protected override Direction DetermineDirection()

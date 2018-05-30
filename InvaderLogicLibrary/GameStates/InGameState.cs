@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using InvaderLogicLibrary.Entities;
+using InvaderLogicLibrary.Observer;
 
 namespace InvaderLogicLibrary.GameStates
 {
@@ -38,11 +39,21 @@ namespace InvaderLogicLibrary.GameStates
 
             EnemySpawner spawner = new EnemySpawner(150, 50, 50, 4, 3, 50);
             
-            entityFlyweight.GameObjects = spawner.Spawn(entityFlyweight);
+            ICollection<IEntity> enemies = new List<IEntity>();
+            ICollection<IObserver> enemyObservers = new List<IObserver>();
 
-            player = new Player(keyboardInput, hitBox, entityFlyweight);
+            entityFlyweight = new Flyweight.Flyweight();
+
+            player = new Player(keyboardInput, hitBox, entityFlyweight, enemyObservers);
             player.Vx = 500;
             player.Vy = 400;
+
+            ICollection<IObserver> friends = new List<IObserver>() { player };
+            
+            (enemyObservers, enemies) = spawner.Spawn(entityFlyweight, friends);
+            entityFlyweight.GameObjects = enemies;
+
+            player.EnemyEntities = enemyObservers;
         }
 
         public void OnUnload()

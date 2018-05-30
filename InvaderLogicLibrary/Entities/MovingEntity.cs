@@ -13,6 +13,7 @@ namespace InvaderLogicLibrary.Entities
         public IHitBox HitBox { get; set; }
         public double Vx { get; set; }
         public double Vy { get; set; }
+        public bool IsDestroyed { get; set; }
 
         public enum Direction
         {

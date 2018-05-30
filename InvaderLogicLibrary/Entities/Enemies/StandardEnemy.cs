@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvaderLogicLibrary.Entities.Bullets;
+using InvaderLogicLibrary.Observer;
 
 namespace InvaderLogicLibrary.Entities.Enemies
 {
@@ -14,20 +16,13 @@ namespace InvaderLogicLibrary.Entities.Enemies
         public int RightLimit { get; set; }
         Direction direction;
 
-        public StandardEnemy(IHitBox hb, int leftLimit, int rightLimit, Flyweight.Flyweight flyweight): base(flyweight, hb, 1.0, Direction.Down)
+        public StandardEnemy(IHitBox hb, int leftLimit, int rightLimit, Flyweight.Flyweight flyweight, ICollection<IObserver> enemyEntities): 
+            base(flyweight, hb, 1.0, Direction.Down, enemyEntities)
         {
             LeftLimit = leftLimit;
             RightLimit = rightLimit;
             direction = Direction.Left;
             Vx = 100;
-        }
-
-        public void Notify(IHitBox hitBox)
-        {
-            if (HitBox.IsHit(HitBox))
-            {
-                destroyed = true;
-            }
         }
 
         protected override MovingEntity.Direction DetermineDirection()
@@ -47,6 +42,16 @@ namespace InvaderLogicLibrary.Entities.Enemies
         protected override bool IsShooting()
         {
             return true;
+        }
+
+        public void Notify(IBullet bullet)
+        {
+            if(HitBox.IsHit(bullet.HitBox))
+            {
+                IsDestroyed = true;
+                bullet.HitSignal();
+                bullet.DestroyedSignal(this);
+            }
         }
     }
 }

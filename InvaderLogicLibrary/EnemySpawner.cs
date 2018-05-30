@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvaderLogicLibrary.Observer;
 
 namespace InvaderLogicLibrary
 {
@@ -25,7 +26,6 @@ namespace InvaderLogicLibrary
             this.size = size;
             this.startY = startY;
             this.startX = startX;
-   
         }
 
         (int middle, int leftLimit, int rightLimit) GetStartingPosition(int startX)
@@ -38,9 +38,10 @@ namespace InvaderLogicLibrary
             return (rightLimit + space, rightLimit, rightLimit + (space * 2) + size);
         }
 
-        public ICollection<IEntity> Spawn(Flyweight.Flyweight flyweight)
+        public (ICollection<IObserver>, ICollection<IEntity>) Spawn(Flyweight.Flyweight flyweight, ICollection<IObserver> enemyEntities)
         {
             ICollection<IEntity> enemies = new List<IEntity>();
+            ICollection<IObserver> enemyObservers = new List<IObserver>();
             int currentY = startY;
             (int middle, int leftLimit, int rightLimit) = GetStartingPosition(startX);
 
@@ -49,15 +50,17 @@ namespace InvaderLogicLibrary
                 for (int j = 0; j < rows; j++)
                 {
                     HitBox hb = new HitBox(middle, currentY, size, size);
-                    StandardEnemy standardEnemy = new StandardEnemy(hb, leftLimit, rightLimit, flyweight);
+                    
+                    StandardEnemy standardEnemy = new StandardEnemy(hb, leftLimit, rightLimit, flyweight, enemyEntities);
                     enemies.Add(standardEnemy);
+                    enemyObservers.Add(standardEnemy);
                     (middle, leftLimit, rightLimit) = AdvancePosition(rightLimit);
                 }
                 currentY += space + size;
                 (middle, leftLimit, rightLimit) = GetStartingPosition(startX);
             }
 
-            return enemies;
+            return (enemyObservers, enemies);
         }
     }
 }

@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Entities.Bullets
 {
-    interface IBullet: IEntity, IObserverSubject
+    public interface IBullet: IEntity
     {
+        ICollection<IObserver> Observers { get; set; }
+        void HitSignal();
+        void DestroyedSignal(IObserver observer);
+        void Notify();
     }
 }

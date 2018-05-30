@@ -12,6 +12,8 @@ namespace InvaderLogicLibrary.Entities
         IHitBox HitBox { get; set; }
         double Vx { get; set; }
         double Vy { get; set; }
+        bool IsDestroyed { get; set; }
+
         void Update(double dt);
         void Draw(Graphics g);
     }

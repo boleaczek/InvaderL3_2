@@ -12,23 +12,35 @@ namespace InvaderLogicLibrary.Entities.Bullets
     {
         Direction direction;
         int limit;
-        public bool IsDestroyed;
+        public bool IsDestroyed { get; set; }
 
         public ICollection<IObserver> Observers { get; set; }
 
-        public StandardBullet(IHitBox hb, Direction dir, int limitY) : base(hb)
+        public StandardBullet(IHitBox hb, Direction dir, int limitY, ICollection<IObserver> entities) : base(hb)
         {
             direction = dir;
             limit = limitY;
             IsDestroyed = false;
+            Observers = entities;
         }
 
         public void Notify()
         {
+            if(IsDestroyed == false)
             foreach (IObserver observer in Observers)
             {
-                observer.Notify(HitBox);
+                observer.Notify(this);
+                if(IsDestroyed == true)
+                {
+                    break;
+                }
             }
+        }
+
+        public new void Update(double dt)
+        {
+            base.Update(dt);
+            Notify();
         }
 
         protected override Direction DetermineDirection()
@@ -42,7 +54,6 @@ namespace InvaderLogicLibrary.Entities.Bullets
             {
                 IsDestroyed = true;
             }
-
         }
 
         new public void Draw(Graphics g)
@@ -51,5 +62,14 @@ namespace InvaderLogicLibrary.Entities.Bullets
             g.FillRectangle(Brushes.PaleVioletRed, rect);
         }
 
+        public void HitSignal()
+        {
+            IsDestroyed = true;
+        }
+
+        public void DestroyedSignal(IObserver observer)
+        {
+            Observers.Remove(observer);
+        }
     }
 }

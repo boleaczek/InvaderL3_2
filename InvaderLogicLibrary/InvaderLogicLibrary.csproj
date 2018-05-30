@@ -61,7 +61,6 @@
     <Compile Include="IKeyboardInput.cs" />
     <Compile Include="Entities\MovingEntity.cs" />
     <Compile Include="Observer\IObserver.cs" />
-    <Compile Include="Observer\IObserverSubject.cs" />
     <Compile Include="KeyboardInput.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

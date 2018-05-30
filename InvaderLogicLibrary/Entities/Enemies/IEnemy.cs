@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Entities.Enemies
 {
-    interface IEnemy : IEntity, IObserver
+    interface IEnemy : IObserver
     {
         
     }
