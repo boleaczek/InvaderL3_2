@@ -51,6 +51,7 @@
     <Compile Include="Entities\ShootingEntity.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="GameStateManager.cs" />
+    <Compile Include="GameStates\GameOverState.cs" />
     <Compile Include="GameStates\InGameState.cs" />
     <Compile Include="GameStates\MenuState.cs" />
     <Compile Include="HitBox.cs" />
