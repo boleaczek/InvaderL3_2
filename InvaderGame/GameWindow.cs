@@ -43,9 +43,6 @@ namespace InvaderGame
             // aktualizacja stanu
             stateManager.Update(dt);
 
-            // aktualizacja labela
-            coin_label.Text = String.Format("Miłego dnia", dt);
-
             // przerysowanie ekranu gry
             canvas.Refresh();
         }
