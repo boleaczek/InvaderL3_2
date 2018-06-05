@@ -24,9 +24,15 @@ namespace InvaderGame
             InitializeComponent();
 
             input = new KeyboardInput();
+            MenuState menu = new MenuState();
+            
             IGameState state = new InGameState(input);
             screen = new Rectangle(0, 0, 800, 600);
-            stateManager = new GameStateManager(state);
+            stateManager = new GameStateManager(menu);
+
+            menu.StateManager = stateManager;
+            menu.NextState = state;
+            menu.Input = input;
         }
 
         // aktualizacja gry
