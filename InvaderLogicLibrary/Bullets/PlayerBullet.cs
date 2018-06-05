@@ -7,17 +7,14 @@ using System.Drawing;
 
 namespace InvaderLogicLibrary.Bullets
 {
-    public class StandardBullet : MovingEntity, IBullet
+    public class PlayerBullet : MovingEntity, IBullet
     {
-        Direction direction;
-        int limit;
         public bool IsDestroyed;
 
-        public StandardBullet(IHitBox hb, Direction dir, int limitY) : base(hb)
+        public PlayerBullet(IHitBox hb, double speed) : base(hb)
         {
-            direction = dir;
-            limit = limitY;
-            IsDestroyed = false;
+            HitBox = hb;
+            Vy = speed;
         }
 
         public void Notify()
@@ -27,7 +24,7 @@ namespace InvaderLogicLibrary.Bullets
 
         protected override Direction DetermineDirection()
         {
-            return direction;
+            return Direction.None;
         }
 
         protected override void HandleColision()

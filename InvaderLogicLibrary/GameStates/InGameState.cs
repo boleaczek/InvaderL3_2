@@ -9,10 +9,10 @@ using InvaderLogicLibrary.Enemies;
 namespace InvaderLogicLibrary.GameStates
 {
     public class InGameState : IGameState
-    {      
-        private IEntity player;
+    {
+        private Player player;
         private IKeyboardInput keyboardInput;
-        private Flyweight.Flyweight enemyFlyweight;
+        private Flyweight.Flyweight entityFlyweight;
 
         public InGameState(IKeyboardInput kb)
         {
@@ -21,8 +21,8 @@ namespace InvaderLogicLibrary.GameStates
 
         public void OnDraw(Graphics g)
         {
+            entityFlyweight.Draw(g);
             player.Draw(g);
-            enemyFlyweight.Draw(g);
         }
 
         public void OnLoad()
@@ -34,34 +34,26 @@ namespace InvaderLogicLibrary.GameStates
 
             IHitBox hitBox = new HitBox(startX, startY, width, height);
 
-            player = new Player(keyboardInput, hitBox);
+            entityFlyweight = new Flyweight.Flyweight();
+
+            EnemySpawner spawner = new EnemySpawner(150, 50, 50, 4, 3, 50);
+            
+            entityFlyweight.GameObjects = spawner.Spawn();
+
+            player = new Player(keyboardInput, hitBox, entityFlyweight);
             player.Vx = 500;
             player.Vy = 400;
-
-            enemyFlyweight = new Flyweight.Flyweight();
-            enemyFlyweight.GameObjects = new List<IEntity>() {
-                new StandardEnemy(new HitBox(150, 150, 32, 32), 50, 500)
-                {
-                    Vx = 100,
-                    Vy = 400
-                },
-                new StandardEnemy(new HitBox(250, 250, 32, 32), 50, 500)
-                {
-                    Vx = 100,
-                    Vy = 400
-                }};
-            
         }
 
         public void OnUnload()
         {
-            
+
         }
 
         public void OnUpdate(double dt)
         {
             player.Update(dt);
-            enemyFlyweight.Update(dt);
+            entityFlyweight.Update(dt);
         }
     }
 }

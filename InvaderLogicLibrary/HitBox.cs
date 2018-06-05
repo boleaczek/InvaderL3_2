@@ -8,25 +8,25 @@ namespace InvaderLogicLibrary
 {
     public class HitBox:IHitBox
     {
-        public double X { get; set; }
-        public double Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public double Width { get; set; }
         public double Height { get; set; }
 
-        public HitBox(double x, double y, double width, double height)
+        public HitBox(int x, int y, double width, double height)
         {
-            this.X = x;
-            this.Y = y;
-            this.Width = width;
-            this.Height = height;
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
         }
 
         public bool IsHit(IHitBox hitbox)
         {
-            return (this.X < hitbox.X + hitbox.Width && 
-                    this.X + this.Width > hitbox.X &&
-                    this.Y < hitbox.Y + hitbox.Height && 
-                    this.Y + this.Height > hitbox.Y);
+            return (X < hitbox.X + hitbox.Width && 
+                    X + Width > hitbox.X &&
+                    Y < hitbox.Y + hitbox.Height && 
+                    Y + Height > hitbox.Y);
         }
     }
 }
