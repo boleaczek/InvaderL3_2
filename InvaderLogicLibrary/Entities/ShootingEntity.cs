@@ -20,13 +20,13 @@ namespace InvaderLogicLibrary.Entities
         public ShotingEntity(Flyweight.Flyweight entities, IHitBox hitbox, double fireRate, Direction dir, ICollection<IObserver> gameEntities) : base(hitbox)
         {
             this.entities = entities;
-            this.fireRate = 8.0;
+            this.fireRate = 2.0;
             lastShoot = 0;
             bulletsDirection = dir;
             EnemyEntities = gameEntities;
         }
 
-        new public void Update(double dt)
+        override public void Update(double dt)
         {
             base.Update(dt);
 
@@ -45,8 +45,10 @@ namespace InvaderLogicLibrary.Entities
                 double bulletWidth = 4.0,
                        bulletHeight = 30.0;
 
+                int offset = (int)((bulletsDirection == Direction.Down) ? HitBox.Height : 0);
+
                 int bulletX = HitBox.X + (int)((HitBox.Width / 2) - (bulletWidth / 2)),
-                       bulletY = HitBox.Y - (int)(bulletHeight / 2);
+                       bulletY = (HitBox.Y - (int)(bulletHeight / 2)) + offset;
 
                 IHitBox hitbox = new HitBox(bulletX, bulletY, bulletWidth, bulletHeight);
                 StandardBullet bullet = new StandardBullet(hitbox, bulletsDirection, 0, EnemyEntities)

@@ -11,7 +11,6 @@ namespace InvaderLogicLibrary.Flyweight
     public class Flyweight
     {
         public ICollection<IEntity> GameObjects { get; set; }
-        int iter = 0;
 
         public void Update(double dt)
         {

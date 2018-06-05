@@ -13,7 +13,6 @@ namespace InvaderLogicLibrary.Entities
     public class Player : ShotingEntity, IObserver
     {
         IKeyboardInput keyboardInput;
-        int life = 10;
 
         public Player(IKeyboardInput kb, IHitBox hitbox, Flyweight.Flyweight entityFlyweight, ICollection<IObserver> enemyEntities) : 
             base(entityFlyweight, hitbox, 8.0, Direction.Up, enemyEntities)
@@ -23,7 +22,7 @@ namespace InvaderLogicLibrary.Entities
 
         public void Notify(IBullet bullet)
         {
-     
+            
         }
 
         protected override Direction DetermineDirection()

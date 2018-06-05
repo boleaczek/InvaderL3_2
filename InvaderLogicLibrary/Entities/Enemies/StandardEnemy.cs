@@ -9,9 +9,8 @@ using InvaderLogicLibrary.Observer;
 
 namespace InvaderLogicLibrary.Entities.Enemies
 {
-    public class StandardEnemy : ShotingEntity, IEnemy
+    public class StandardEnemy : ShotingEntity, IObserver
     {
-        bool destroyed;
         public int LeftLimit { get; set; }
         public int RightLimit { get; set; }
         Direction direction;

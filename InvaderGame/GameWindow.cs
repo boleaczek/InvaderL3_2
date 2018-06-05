@@ -38,7 +38,7 @@ namespace InvaderGame
             stateManager.Update(dt);
 
             // aktualizacja labela
-            coin_label.Text = String.Format("Delta czas: {0}", dt);
+            coin_label.Text = String.Format("Miłego dnia", dt);
 
             // przerysowanie ekranu gry
             canvas.Refresh();

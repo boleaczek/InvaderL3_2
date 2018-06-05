@@ -35,7 +35,7 @@ namespace InvaderLogicLibrary.Entities
             g.FillRectangle(Brushes.LightCyan, rect);
         }
 
-        public void Update(double dt)
+        public virtual void Update(double dt)
         {
             Move(dt);
             HandleColision();
