@@ -1,4 +1,5 @@
 ﻿using InvaderLogicLibrary.Entities.Bullets;
+using InvaderLogicLibrary.Flyweight;
 using InvaderLogicLibrary.Observer;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,14 @@ namespace InvaderLogicLibrary.Entities
 {
     public abstract class ShotingEntity : MovingEntity
     {
-        Flyweight.Flyweight entities;
+        IFlyweight entities;
         double lastShoot;
         double fireRate;
         Direction bulletsDirection;
 
         public ICollection<IObserver> EnemyEntities { get; set; }
 
-        public ShotingEntity(Flyweight.Flyweight entities, IHitBox hitbox, double fireRate, Direction dir, ICollection<IObserver> gameEntities) : base(hitbox)
+        public ShotingEntity(IFlyweight entities, IHitBox hitbox, double fireRate, Direction dir, ICollection<IObserver> gameEntities) : base(hitbox)
         {
             this.entities = entities;
             this.fireRate = 2.0;

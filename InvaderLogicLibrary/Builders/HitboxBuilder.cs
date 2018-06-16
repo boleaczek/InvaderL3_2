@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.Builders
 {
-    class HitboxBuilder : IHitBoxBuilder
+    public class HitboxBuilder : IHitBoxBuilder
     {
         double _width;
         double _height;

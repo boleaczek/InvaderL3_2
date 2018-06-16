@@ -7,33 +7,83 @@ using System.Drawing;
 using InvaderLogicLibrary.Entities;
 using InvaderLogicLibrary.Observer;
 using InvaderLogicLibrary.Builders;
+using InvaderLogicLibrary.Flyweight;
 
 namespace InvaderLogicLibrary.GameStates
 {
-    public class InGameState : IGameState
+    public class InGameState : IGameState, IGameStatusObserver
     {
-        private Player player;
+        public IInfoDisplayState NextState { get; set; }
         private IKeyboardInput keyboardInput;
-        private Flyweight.Flyweight entityFlyweight;
+        public IFlyweight Flyweight { get; set; }
+        Player player;
+        
+        public IGameStateManager StateManager { get; set; }
+        ITextDisplay scoreDisplay;
+        ITextDisplay hitpointsDisplay;
+        public EnemySpawner Spawner { get; set; }
+        public int EnemyCount { get; set; }
+        public int Score { get; set; }
 
-        public InGameState(IKeyboardInput kb)
+        public InGameState(IKeyboardInput kb, IInfoDisplayState gameSummary)
         {
             keyboardInput = kb;
+            Flyweight = new Flyweight.Flyweight();
+
+            scoreDisplay = new TextDisplay();
+            hitpointsDisplay = new TextDisplay();
+
+            NextState = gameSummary;
+
+            Font f = new Font("Verdana", 15);
+            Brush b = Brushes.White;
+            scoreDisplay.Font = new Font("Verdana", 15);
+            scoreDisplay.Brush = b;
+            hitpointsDisplay.Font = new Font("Verdana", 15);
+            hitpointsDisplay.Brush = b;
+        }
+
+        public void NotifyEnemyDestroyed()
+        {
+            Score += 100;
+            EnemyCount--;
+            scoreDisplay.Text = $"Score: {Score}";
+            if (EnemyCount == 0)
+            {
+                NewEnemies();
+            }
         }
 
         public void OnDraw(Graphics g)
         {
-            entityFlyweight.Draw(g);
             player.Draw(g);
+            hitpointsDisplay.PrintText(g, 400, 600);
+            scoreDisplay.PrintText(g, 400, 650);
+            Flyweight.Draw(g);
         }
 
         public void OnLoad()
         {
-            entityFlyweight = new Flyweight.Flyweight();
+            GameStart();
+        }
 
+        public void GameStart()
+        {
+            CreatePlayerInitial();
+            CreateSpawner();
+            NewEnemies();
+        }
 
+        void NewEnemies()
+        {
+            ICollection<IEntity> enemies = Spawner.Spawn();
+            EnemyCount = enemies.Count;
+            Flyweight.GameObjects = enemies;
+            player.EnemyEntities = new List<IObserver>(enemies.Select(entity => (IObserver)entity));
+        }
 
-            //define initial player instance that can be provided to EnemySpawner.Spawn method
+        void CreatePlayerInitial()
+        {
             int width = 32,
                 height = 32,
                 startX = (800 / 2) - (width / 2),
@@ -41,19 +91,16 @@ namespace InvaderLogicLibrary.GameStates
 
             IHitBox playerHitbox = new HitBox(startX, startY, width, height);
 
-            player = new Player(keyboardInput, playerHitbox, entityFlyweight, null);
+            player = new Player(keyboardInput, playerHitbox, Flyweight, null, this);
             player.Vx = 500;
             player.Vy = 400;
+        }
 
-            //initializing enemies
+        void CreateSpawner()
+        {
             IHitBoxBuilder hitBoxBuilder = new HitboxBuilder(50, 50);
-            IEnemyBuilder enemyBuilder = new StandardEnemyBuilder(hitBoxBuilder, new List<IObserver> { player }, entityFlyweight);
-            EnemySpawner spawner = new EnemySpawner(150, 50, 50, 4, 3, 50, enemyBuilder);
-            ICollection<IEntity> enemies = spawner.Spawn();
-            entityFlyweight.GameObjects = enemies;
-
-            //now that enemies have been created, initialize EnemyEnties for player and GameObjects for flyweight
-            player.EnemyEntities = new List<IObserver>(enemies.Select(entity => (IObserver)entity));
+            IEnemyBuilder enemyBuilder = new StandardEnemyBuilder(hitBoxBuilder, new List<IObserver> { player as IObserver }, Flyweight, this);
+            Spawner = new EnemySpawner(150, 50, 50, 4, 3, 50, enemyBuilder);
         }
 
         public void OnUnload()
@@ -64,7 +111,14 @@ namespace InvaderLogicLibrary.GameStates
         public void OnUpdate(double dt)
         {
             player.Update(dt);
-            entityFlyweight.Update(dt);
+            hitpointsDisplay.Text = $"Hit points: {player.HitPoints}";
+            Flyweight.Update(dt);
+        }
+
+        public void NotifyPlayerDestroyed()
+        {
+            NextState.Message = $"Game Over\n Score: {Score}";
+            StateManager.SetState(NextState);
         }
     }
 }

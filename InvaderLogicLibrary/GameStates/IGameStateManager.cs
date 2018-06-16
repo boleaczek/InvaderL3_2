@@ -5,17 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvaderLogicLibrary.Entities
+namespace InvaderLogicLibrary.GameStates
 {
-    public interface IEntity
+    public interface IGameStateManager
     {
-        IHitBox HitBox { get; set; }
-
-        double Vx { get; set; }
-        double Vy { get; set; }
-        bool IsDestroyed { get; set; }
+        void SetState(IGameState newState);
 
         void Update(double dt);
+
         void Draw(Graphics g);
     }
 }

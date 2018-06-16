@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using InvaderLogicLibrary.GameStates;
 
 namespace InvaderLogicLibrary
 {
@@ -13,5 +14,6 @@ namespace InvaderLogicLibrary
         void OnUnload();
         void OnUpdate(double dt);
         void OnDraw(Graphics g);
+        IGameStateManager StateManager { get; set; }
     }
 }

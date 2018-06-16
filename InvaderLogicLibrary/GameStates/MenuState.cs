@@ -7,44 +7,49 @@ using System.Threading.Tasks;
 
 namespace InvaderLogicLibrary.GameStates
 {
-    public class MenuState : IGameState
+    public class MenuState : IInfoDisplayState
     {
-        private Font font;
-        private Font font2;
-        private Brush brush;
-        private string logo;
-        private string prompt;
-        private SizeF logoSize;
-        private SizeF promptSize;
-        public GameStateManager StateManager;
-        public KeyboardInput Input;
-        public IGameState NextState;
+        public string Score { get; set; }
+
+        public IGameStateManager StateManager { get; set; }
+        public IKeyboardInput Input;
+        public IGameState NextState { get; set; }
+        public string Message { get; set; }
+
+        ITextDisplay promptDisplay;
+        ITextDisplay logoDisplay;
+        ITextDisplay messageDisplay;
+
+        public MenuState()
+        {
+            Score = "";
+        }
 
         public void OnDraw(Graphics g)
         {
-            // narysowanie loga
-            logoSize = g.MeasureString(logo, font);
-            float x = 800 / 2 - (logoSize.Width / 2),
-                  y = 150;
+            logoDisplay.PrintText(g, 800, 150);
+            promptDisplay.PrintText(g, 800, 450);
+            messageDisplay.PrintText(g, 800, 650);
 
-            g.DrawString(logo, font, brush, new PointF(x, y));
-
-            // narysowanie prompta
-            promptSize = g.MeasureString(prompt, font2);
-            x = 800 / 2 - (promptSize.Width / 2);
-            y = 450;
-
-            g.DrawString(prompt, font2, brush, new PointF(x, y));
         }
 
         public void OnLoad()
         {
-            font = new Font("Verdana", 48);
-            font2 = new Font("Verdana", 26);
-            brush = new SolidBrush(Color.White);
+            Brush brush = new SolidBrush(Color.White);
+            promptDisplay = new TextDisplay();
+            promptDisplay.Font = new Font("Verdana", 48);
+            promptDisplay.Brush = brush;
+            promptDisplay.Text = "INVADER";
 
-            logo = "INVADER";
-            prompt = "Press [spacebar] to start!";
+            logoDisplay = new TextDisplay();
+            logoDisplay.Font = new Font("Verdana", 26);
+            logoDisplay.Brush = brush;
+            logoDisplay.Text = "Press [spacebar] to start!";
+
+            messageDisplay = new TextDisplay();
+            messageDisplay.Font = new Font("Verdana", 26);
+            messageDisplay.Brush = brush;
+            messageDisplay.Text = Message;
         }
 
         public void OnUnload()

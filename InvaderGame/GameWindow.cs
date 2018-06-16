@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 using InvaderLogicLibrary;
+using InvaderLogicLibrary.Builders;
+using InvaderLogicLibrary.Entities;
+using InvaderLogicLibrary.Flyweight;
 using InvaderLogicLibrary.GameStates;
+using InvaderLogicLibrary.Observer;
 
 namespace InvaderGame
 {
@@ -26,10 +30,11 @@ namespace InvaderGame
             input = new KeyboardInput();
             MenuState menu = new MenuState();
             
-            IGameState state = new InGameState(input);
-            screen = new Rectangle(0, 0, 800, 600);
+            IGameState state = new InGameState(input, menu);
+            screen = new Rectangle(0, 0, 800, 800);
             stateManager = new GameStateManager(menu);
-
+            
+            state.StateManager = stateManager;
             menu.StateManager = stateManager;
             menu.NextState = state;
             menu.Input = input;

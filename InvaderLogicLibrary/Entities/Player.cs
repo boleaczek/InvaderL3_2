@@ -13,16 +13,29 @@ namespace InvaderLogicLibrary.Entities
     public class Player : ShotingEntity, IObserver
     {
         IKeyboardInput keyboardInput;
+        public int HitPoints { get; set; }
+        public IGameStatusObserver GameStatusObserver { get; set; }
 
-        public Player(IKeyboardInput kb, IHitBox hitbox, Flyweight.Flyweight entityFlyweight, ICollection<IObserver> enemyEntities) : 
+        public Player(IKeyboardInput kb, IHitBox hitbox, IFlyweight entityFlyweight, ICollection<IObserver> enemyEntities, IGameStatusObserver gameStatusObserver) : 
             base(entityFlyweight, hitbox, 8.0, Direction.Up, enemyEntities)
         {
             keyboardInput = kb;
+            HitPoints = 10;
+            GameStatusObserver = gameStatusObserver;
         }
 
         public void Notify(IBullet bullet)
         {
-            
+            if(HitBox.IsHit(bullet.HitBox))
+            {
+                bullet.HitSignal();
+                HitPoints -= 1;
+
+                if (HitPoints <= 0)
+                {
+                    GameStatusObserver.NotifyPlayerDestroyed();
+                }
+            }
         }
 
         protected override Direction DetermineDirection()

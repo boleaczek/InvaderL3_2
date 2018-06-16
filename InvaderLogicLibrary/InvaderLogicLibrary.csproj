@@ -52,23 +52,31 @@
     <Compile Include="Entities\Bullets\StandardBullet.cs" />
     <Compile Include="Entities\Enemies\StandardEnemy.cs" />
     <Compile Include="Enemy Spawners\EnemySpawner.cs" />
+    <Compile Include="Entities\IPlayer.cs" />
     <Compile Include="Entities\ShootingEntity.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
-    <Compile Include="GameStateManager.cs" />
+    <Compile Include="Flyweight\IFlyweight.cs" />
+    <Compile Include="GameStates\GameStateManager.cs" />
+    <Compile Include="GameStates\IGameStateManager.cs" />
+    <Compile Include="GameStates\IInfoDisplayState.cs" />
     <Compile Include="GameStates\InGameState.cs" />
     <Compile Include="GameStates\MenuState.cs" />
     <Compile Include="HitBox.cs" />
     <Compile Include="Entities\Bullets\IBullet.cs" />
     <Compile Include="Entities\Enemies\IEnemy.cs" />
     <Compile Include="Entities\IEntity.cs" />
-    <Compile Include="IGameState.cs" />
+    <Compile Include="GameStates\IGameState.cs" />
     <Compile Include="IHitBox.cs" />
     <Compile Include="IKeyboardInput.cs" />
     <Compile Include="Entities\MovingEntity.cs" />
+    <Compile Include="ITextDisplay.cs" />
+    <Compile Include="Observer\IGameStatusObserver.cs" />
     <Compile Include="Observer\IObserver.cs" />
     <Compile Include="KeyboardInput.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Observer\PlayerStatusManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextDisplay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

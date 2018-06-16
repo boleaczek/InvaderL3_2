@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using InvaderLogicLibrary.GameStates;
 
 namespace InvaderLogicLibrary
 {
-    public class GameStateManager
+    public class GameStateManager : IGameStateManager
     {
         IGameState currentState;
 

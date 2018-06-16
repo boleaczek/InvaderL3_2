@@ -10,7 +10,7 @@ using InvaderLogicLibrary.Builders;
 
 namespace InvaderLogicLibrary
 {
-    class EnemySpawner
+    public class EnemySpawner
     {
         int startX;
         int startY;
