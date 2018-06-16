@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InvaderLogicLibrary.Observer;
+using InvaderLogicLibrary.Builders;
 
 namespace InvaderLogicLibrary
 {
@@ -17,8 +18,9 @@ namespace InvaderLogicLibrary
         int rows;
         int cols;
         int size;
+        IEnemyBuilder enemyBuilder;
 
-        public EnemySpawner(int startX, int startY, int space, int rows, int cols, int size)
+        public EnemySpawner(int startX, int startY, int space, int rows, int cols, int size, IEnemyBuilder enemyBuilder)
         {
             this.rows = rows;
             this.cols = cols;
@@ -26,6 +28,7 @@ namespace InvaderLogicLibrary
             this.size = size;
             this.startY = startY;
             this.startX = startX;
+            this.enemyBuilder = enemyBuilder;
         }
 
         (int middle, int leftLimit, int rightLimit) GetStartingPosition(int startX)
@@ -38,7 +41,7 @@ namespace InvaderLogicLibrary
             return (rightLimit + space, rightLimit, rightLimit + (space * 2) + size);
         }
 
-        public (ICollection<IObserver>, ICollection<IEntity>) Spawn(Flyweight.Flyweight flyweight, ICollection<IObserver> enemyEntities)
+        public ICollection<IEntity> Spawn()
         {
             ICollection<IEntity> enemies = new List<IEntity>();
             ICollection<IObserver> enemyObservers = new List<IObserver>();
@@ -49,18 +52,15 @@ namespace InvaderLogicLibrary
             {
                 for (int j = 0; j < rows; j++)
                 {
-                    HitBox hb = new HitBox(middle, currentY, size, size);
-                    
-                    StandardEnemy standardEnemy = new StandardEnemy(hb, leftLimit, rightLimit, flyweight, enemyEntities);
-                    enemies.Add(standardEnemy);
-                    enemyObservers.Add(standardEnemy);
+                    IEntity enemy = enemyBuilder.Build(leftLimit, rightLimit, middle, currentY);
+                    enemies.Add(enemy);
                     (middle, leftLimit, rightLimit) = AdvancePosition(rightLimit);
                 }
                 currentY += space + size;
                 (middle, leftLimit, rightLimit) = GetStartingPosition(startX);
             }
 
-            return (enemyObservers, enemies);
+            return enemies;
         }
     }
 }

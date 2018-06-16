@@ -44,10 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\HitboxBuilder.cs" />
+    <Compile Include="Builders\IEnemyBuilder.cs" />
+    <Compile Include="Builders\IHitBoxBuilder.cs" />
+    <Compile Include="Builders\StandardEnemyBuilder.cs" />
     <Compile Include="Entities\Bullets\PlayerBullet.cs" />
     <Compile Include="Entities\Bullets\StandardBullet.cs" />
     <Compile Include="Entities\Enemies\StandardEnemy.cs" />
-    <Compile Include="EnemySpawner.cs" />
+    <Compile Include="Enemy Spawners\EnemySpawner.cs" />
     <Compile Include="Entities\ShootingEntity.cs" />
     <Compile Include="Flyweight\Flyweight.cs" />
     <Compile Include="GameStateManager.cs" />

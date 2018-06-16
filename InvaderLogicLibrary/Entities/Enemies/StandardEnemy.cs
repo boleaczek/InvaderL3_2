@@ -24,7 +24,7 @@ namespace InvaderLogicLibrary.Entities.Enemies
             Vx = 100;
         }
 
-        protected override MovingEntity.Direction DetermineDirection()
+        protected override Direction DetermineDirection()
         {
             if (HitBox.X <= LeftLimit)
             {
